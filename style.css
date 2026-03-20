@@ -34,3 +34,12 @@ button {
 button:hover {
   background: #ff1a1a;
 }
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+}

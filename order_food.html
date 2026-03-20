@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Freunde einladen</title>
     <link rel="stylesheet" href="style.css">
-</head>
-
+</head> 
 <body>
     <div class="container">
-        <h1 onclick="goToPage('menu.html')"> Guthaben aufladen </h1>
+        <h1 onclick="goToPage('menu.html')"> Essen </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
         <list>
-            <ul> 5 Credits - 5€ [+] [-]
-            </ul>
-            <ul> 10 Credits - 9€ [+] [-]
-            </ul>
-            <ul> 20 Credits - 17€ [+] [-]
-            </ul>
+            <ul onclick="goToPage('order_pizza.html')"> 🍕 Pizza </ul>
+            <ul onclick="goToPage('order_asia.html')"> 🍜 Asia </ul>
+            <ul onclick="goToPage('order_drinks.html')"> 🍹 Getränke </ul>
         </list>
     </div>
+
     <script src="script.js"></script>
 </body>
-
 </html>
