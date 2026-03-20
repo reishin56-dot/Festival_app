@@ -10,12 +10,19 @@
   <div class="container">
     <h1>📱 Menü</h1>
     <p>Was möchten sie tun?</p>
-
-    <button onclick="goToMenu()">Bestellen</button>
-    <button onclick="goToMenu()">Meine Bestellungen</button>
-    <button onclick="goToMenu()">Freunde einladen</button>
-    <button onclick="goToMenu()">Guthaben aufladen</button>
-
+    <table >
+      <tr>
+        <td><button onclick="goToMenu(order_drinks.html)">Getränke bestellen</button></td>
+      </tr> 
+        <td><button onclick="goToMenu(order_food.html)">Essen bestellen</button></td>
+      <tr>
+        <td><button onclick="goToMenu(notifications.html)">Meine Bestellungen</button></td>
+      </tr>
+        <td><button onclick="goToMenu(share_orders.html)">Freunde einladen</button></td>
+      <tr>
+        <td><button onclick="goToMenu()">Guthaben aufladen</button></td>
+      </tr>
+    </table>
     <button onclick="goBack()">Zurück</button>
   </div>
 
