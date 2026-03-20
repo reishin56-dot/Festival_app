@@ -29,6 +29,8 @@ button {
   background: #ff4d4d;
   color: white;
   cursor: pointer;
+  display: block;
+  margin: 10px auto;
 }
 
 
@@ -61,6 +63,16 @@ span {
 
 button:hover {
   background: #ff1a1a;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: center;
+  padding: 8px;
 }
 
 footer {
