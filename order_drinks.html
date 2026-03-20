@@ -3,29 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Freunde einladen</title>
+    <title>Getränke</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
-
 <body>
-    <div class="container">
-        <h1 onclick="goToPage('menu.html')"> Getränke </h1>
+       <div class="container">
+        <h1 onclick="goToPage('menu.html')"> Essen </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
         <list>
-            <ul> Wasser - 5 Credits [+] [-]
-            </ul>
-            <ul> 🍹 Cocktail - 12 Credits [+] [-]
-            </ul>
-            <ul> 🍺 Bier - 8 Credits [+] [-]
-            </ul>
+            <div class="item">
+                Wasser - 5 Credits
+                <button class="btn" onclick="change('wasser', -1)">-</button>
+                <span id="wasser">0</span>
+                <button class="btn" onclick="change('wasser', 1)">+</button>
+            </div>
+
+            <div class="item">
+                🍹 Cocktail - 12 Credits
+                <button class="btn" onclick="change('cocktail', -1)">-</button>
+                <span id="cocktail">0</span>
+                <button class="btn" onclick="change('cocktail', 1)">+</button>
+            </div>
+
+            <div class="item">
+                🍺 Bier - 8 Credits
+                <button class="btn" onclick="change('bier', -1)">-</button>
+                <span id="bier">0</span>
+                <button class="btn" onclick="change('bier', 1)">+</button>
+            </div>
+
+            <hr>
+
+            <h3>Gesamt: <span id="total">0</span> Credits</h3>
         </list>
     </div>
 
-
-        <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

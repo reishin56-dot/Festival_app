@@ -12,14 +12,30 @@
         <h1 onclick="goToPage('menu.html')"> Pizza </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
-        <list>
-            <ul> Margherita - 5 Credits [+] [-]
-            </ul>
-            <ul> Spezial - 12 Credits [+] [-]
-            </ul>
-            <ul> Pepperoni - 8 Credits [+] [-]
-            </ul>
-        </list>
+        <div class="item">
+            Margherita - 5 Credits
+            <button class="btn" onclick="change('margherita', -1)">-</button>
+            <span id="margherita">0</span>
+            <button class="btn" onclick="change('margherita', 1)">+</button>
+        </div>
+
+        <div class="item">
+            Spezial - 12 Credits
+            <button class="btn" onclick="change('spezial', -1)">-</button>
+            <span id="spezial">0</span>
+            <button class="btn" onclick="change('spezial', 1)">+</button>
+        </div>
+
+        <div class="item">
+            Pepperoni - 8 Credits
+            <button class="btn" onclick="change('pepperoni', -1)">-</button>
+            <span id="pepperoni">0</span>
+            <button class="btn" onclick="change('pepperoni', 1)">+</button>
+        </div>
+
+        <hr>
+
+        <h3>Gesamt: <span id="total">0</span> Credits</h3>
     </div>
 
 <body>

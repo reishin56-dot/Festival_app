@@ -31,6 +31,34 @@ button {
   cursor: pointer;
 }
 
+
+
+.item {
+    display: flex;              /* alles in einer Reihe */
+    align-items: center;        /* vertikal zentrieren */
+    gap: 10px;                  /* Abstand zwischen Text und Buttons */
+    font-size: 18px;            /* Textgröße */
+    margin-bottom: 10px;        /* Abstand zwischen Items */
+}
+
+.btn {
+    width: 40px;                /* feste Breite */
+    height: 40px;               /* feste Höhe */
+    font-size: 20px;            /* große Schrift für + / - */
+    display: flex;              
+    justify-content: center;    /* horizontal zentrieren */
+    align-items: center;        /* vertikal zentrieren */
+    cursor: pointer;            
+    border: 1px solid #333;     
+    border-radius: 5px;         
+    background-color: #ff0606;  
+}
+
+span {
+    min-width: 20px;            /* Zahl bekommt Platz */
+    text-align: center;         /* Zahl zentriert */
+}
+
 button:hover {
   background: #ff1a1a;
 }

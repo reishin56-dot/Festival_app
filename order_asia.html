@@ -13,14 +13,30 @@
     <h1 onclick="goToPage('menu.html')"> Asia </h1>
 
     <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
-     <list>
-        <ul>🍜 Ramen - 8 Credits [+] [-]
-        </ul>
-        <ul>🍣 Sushi - 10 Credits [+] [-]
-        </ul> 
-        <ul>🥟 Dumplings - 6 Credits [+] [-]
-        </ul>
-    </list>
+    <div class="item">
+        🍜 Ramen - 8 Credits
+        <button class="btn" onclick="change('ramen', -1)">-</button>
+        <span id="ramen">0</span>
+        <button class="btn" onclick="change('ramen', 1)">+</button>
+    </div>
+
+    <div class="item">
+        🍣 Sushi - 10 Credits
+        <button class="btn" onclick="change('sushi', -1)">-</button>
+        <span id="sushi">0</span>
+        <button class="btn" onclick="change('sushi', 1)">+</button>
+    </div>
+
+    <div class="item">
+        🥟 Dumplings - 6 Credits
+        <button class="btn" onclick="change('dumplings', -1)">-</button>
+        <span id="dumplings">0</span>
+        <button class="btn" onclick="change('dumplings', 1)">+</button>
+    </div>
+
+    <hr>
+
+    <h3>Gesamt: <span id="total">0</span> Credits</h3>
 
 </div>
 

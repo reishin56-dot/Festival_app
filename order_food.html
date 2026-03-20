@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Freunde einladen</title>
+    <title>Festival Essen</title>
     <link rel="stylesheet" href="style.css">
-</head> 
-<body>
-    <div class="container">
-        <h1 onclick="goToPage('menu.html')"> Essen </h1>
+</head>
 
-        <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
-        <list>
-            <ul onclick="goToPage('order_pizza.html')"> 🍕 Pizza </ul>
-            <ul onclick="goToPage('order_asia.html')"> 🍜 Asia </ul>
-            <ul onclick="goToPage('order_drinks.html')"> 🍹 Getränke </ul>
-        </list>
+<body>
+
+    <div class="container">
+        <h1 onclick="goToPage('menu.html')">Essen & Getränke</h1>
+
+        <table>
+            <tr>
+                <td><button onclick="goToPage('order_drinks.html')">Getränke bestellen</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="goToPage('order_asia.html')">Asia bestellen</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="goToPage('menu.html')">Zurück zum Menü</button>
+                </td>
+
+        </table>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
