@@ -13,3 +13,7 @@ function goToMenu() {
 function goBack() {
   window.location.href = "index.html";
 }
+
+function goToPage(page) {
+  window.location.href = page;
+}
