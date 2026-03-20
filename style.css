@@ -43,3 +43,15 @@ footer {
   font-size: 14px;
   color: #aaa;
 }
+
+h1 {
+  cursor: pointer;
+}
+
+h1:hover {
+  opacity: 0.8;
+}
+button {
+  width: 200px;
+  height: 50px;
+}
