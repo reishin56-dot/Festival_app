@@ -12,14 +12,30 @@
         <h1 onclick="goToPage('menu.html')"> Guthaben aufladen </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
-        <list>
-            <ul> 5 Credits - 5€ [+] [-]
-            </ul>
-            <ul> 10 Credits - 9€ [+] [-]
-            </ul>
-            <ul> 20 Credits - 17€ [+] [-]
-            </ul>
-        </list>
+        <div class="item">
+            5 Credits - 5€
+            <button class="btn" onclick="change('credits5', -1)">-</button>
+            <span id="credits5">0</span>
+            <button class="btn" onclick="change('credits5', 1)">+</button>
+        </div>
+
+        <div class="item">
+            10 Credits - 9€
+            <button class="btn" onclick="change('credits10', -1)">-</button>
+            <span id="credits10">0</span>
+            <button class="btn" onclick="change('credits10', 1)">+</button>
+        </div>
+
+        <div class="item">
+            20 Credits - 17€
+            <button class="btn" onclick="change('credits20', -1)">-</button>
+            <span id="credits20">0</span>
+            <button class="btn" onclick="change('credits20', 1)">+</button>
+        </div>
+
+        <hr>
+
+        <h3>Gesamt: <span id="total">0</span> €</h3>
     </div>
     <script src="script.js"></script>
 </body>
