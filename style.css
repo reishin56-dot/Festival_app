@@ -29,6 +29,8 @@ button {
   background: #ff4d4d;
   color: white;
   cursor: pointer;
+  display: block;
+  margin: 10px auto;
 }
 
 
@@ -63,6 +65,16 @@ button:hover {
   background: #ff1a1a;
 }
 
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: center;
+  padding: 8px;
+}
+
 footer {
   position: absolute;
   bottom: 10px;
@@ -82,4 +94,46 @@ h1:hover {
 button {
   width: 200px;
   height: 50px;
+}
+
+/* Balkendiagramm Styles */
+.chart-container {
+  margin-top: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-item {
+  margin-bottom: 25px;
+}
+
+.chart-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.chart-bar-wrapper {
+  background: #ddd;
+  border-radius: 5px;
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart-bar {
+  height: 100%;
+  background: #ff4d4d;
+}
+
+.chart-bar-pizza {
+  background: #ff0000;
+}
+
+.chart-bar-asia {
+  background: #ffff00;
+}
+
+.chart-bar-drinks {
+  background: #0000ff;
 }
