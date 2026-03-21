@@ -17,14 +17,21 @@ function goToPage(page) {
   window.location.href = page;
 }
 
-
 // Preise
 let prices = {
   wasser: 5,
   cocktail: 12,
-  bier: 8
+  bier: 8,
+  credits5: 5,
+  credits10: 9,
+  credits20: 17,
+  margherita: 5,
+  spezial: 12,
+  pepperoni: 8,
+  ramen: 8,
+  sushi: 10,
+  dumplings: 6
 };
-
 
 // Menge ändern
 function change(item, delta) {
@@ -40,15 +47,20 @@ function change(item, delta) {
   updateTotal();
 }
 
-
-//NEU: Gesamt berechnen
+// Gesamt berechnen
 function updateTotal() {
   let total = 0;
 
   for (let item in prices) {
-    let amount = parseInt(document.getElementById(item).innerText);
-    total += amount * prices[item];
+    let el = document.getElementById(item);
+    if (el) {
+      let amount = parseInt(el.innerText);
+      total += amount * prices[item];
+    }
   }
 
-  document.getElementById("total").innerText = total;
+  let totalEl = document.getElementById("total");
+  if (totalEl) {
+    totalEl.innerText = total;
+  }
 }
