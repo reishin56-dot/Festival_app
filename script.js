@@ -52,3 +52,28 @@ function updateTotal() {
 
   document.getElementById("total").innerText = total;
 }
+
+const statusFlow = ["Erstellt", "In Zubereitung", "Bereit", "Ausgegeben"];
+
+function toggleStatus(btn) {
+  const nextIndex = (statusFlow.indexOf(btn.innerText) + 1) % statusFlow.length;
+  btn.innerText = statusFlow[nextIndex];
+
+  if (btn.innerText === "Ausgegeben") {
+    btn.style.background = "#7dbb7f";
+    btn.style.color = "#fff";
+    btn.style.borderColor = "#5a9a5c";
+  } else if (btn.innerText === "Bereit") {
+    btn.style.background = "#8ad6ff";
+    btn.style.borderColor = "#5aaed6";
+    btn.style.color = "#0b2a3f";
+  } else if (btn.innerText === "In Zubereitung") {
+    btn.style.background = "#ffcc00";
+    btn.style.borderColor = "#d4a400";
+    btn.style.color = "#1a1a1a";
+  } else {
+    btn.style.background = "#dddddd";
+    btn.style.borderColor = "#999999";
+    btn.style.color = "#1a1a1a";
+  }
+}

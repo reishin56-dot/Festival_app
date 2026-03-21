@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Festival App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="stand-card">
+    <div class="stand-header">
+      <div class="stand-title">[Stand: Pizza]</div>
+      <div class="stand-stock">Bestand: <strong>12</strong></div>
+    </div>
+
+    <div class="stock-warning">*WARNUNG: Nur noch 3 Margherita's*</div>
+
+    <div class="order-list">
+      <div class="order-item">
+        <div class="order-top">
+          <span class="order-id">#A102</span>
+          <span class="order-details">2x Margherita</span>
+          <span class="order-time">14:05</span>
+        </div>
+        <div class="order-extra">Sonderwunsch: Extra Käse</div>
+        <button class="status-btn" onclick="toggleStatus(this)">In Zubereitung</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="order-item">
+        <div class="order-top">
+          <span class="order-id">#A103</span>
+          <span class="order-details">1x Salami</span>
+          <span class="order-time">14:07</span>
+        </div>
+        <button class="status-btn" onclick="toggleStatus(this)">Erstellt</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="order-item placeholder">
+        <span>...</span>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='menu.html'">Zurück</button>
+  </div>
+
+
+  <footer>
+    <p>© 2026 Festival App – by Abilas Sivarajah & Lucas Kessler & Michael Linn</p>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
