@@ -7,12 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<?php
-function changePage($seite) {
-    header("Location: " . $seite);
-    exit();
-}
-?>
+<php require "php_functions.php"; ?>
 
 <body>
   <div class="stand-card">

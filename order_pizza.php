@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-
+<php require "php_functions.php"; ?>
 <body>
 <script src="script.js"></script>
 <div class="container">

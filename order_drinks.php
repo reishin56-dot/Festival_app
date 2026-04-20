@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
+<php require "php_functions.php"; ?>
 <body>
        <div class="container">
         <h1 onclick="goToPage('order_food.php')"> Essen </h1>

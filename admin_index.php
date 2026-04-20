@@ -6,11 +6,11 @@
   <title>Admin Index</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
+<php require "php_functions.php"; ?>
 <body>
   <div class="container">
     <h1><!--🔧--> Admin Index</h1>
-    <p>Willkommen im Admin-Bereich. Bitte wählen Sie eine Option:</p>
+    <p>Willkommen im Admin-Be ich. Bitte wählen Sie eine Option:</p>
     <table>
       <tr>
         <td><button onclick="goToPage('engpasssteuerung.php')">Engpässe</button></td>

@@ -6,7 +6,7 @@
     <title>Freunde einladen</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+<php require "php_functions.php"; ?>
 
 
 <body>

@@ -8,7 +8,7 @@
 
 </head>
 
-
+<php require "php_functions.php"; ?>
 <body></body>
 <div class="container">
     <h1 onclick="goToPage('order_food.php')"> Asia </h1>

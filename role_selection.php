@@ -13,7 +13,7 @@ function changePage($seite) {
     exit();
 }
 ?>
-
+<php require "php_functions.php"; ?>
 <body>
 
   <div class="container">
