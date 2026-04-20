@@ -32,7 +32,7 @@ $maxMenge = max(array_column($stats, 'menge') ?: [1]);
     <link rel="stylesheet" href="style.css">
 </head>
 
-<php require "php_functions.php"; ?>
+
 
 <body>
 <div class="container">

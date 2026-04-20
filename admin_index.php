@@ -6,7 +6,7 @@
   <title>Admin Index</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<php require "php_functions.php"; ?>
+
 <body>
   <div class="container">
     <h1><!--🔧--> Admin Index</h1>

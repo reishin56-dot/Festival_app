@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" href="style.css">
 
-<php require "php_functions.php"; ?>
+
 
 <body> 
     <div class="container">

@@ -33,7 +33,7 @@ $statusLabel = [
     <link rel="stylesheet" href="style.css">
 </head>
 
-<php require "php_functions.php"; ?>
+
 
 <body>
 <div class="container">

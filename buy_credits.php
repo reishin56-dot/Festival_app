@@ -55,7 +55,7 @@ $credits = $stmt->fetchColumn();
     <title>Guthaben aufladen</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<php require "php_functions.php"; ?>
+
 <body>
 <div class="container">
     <h1 onclick="goToPage('menu.php')">Guthaben aufladen</h1>

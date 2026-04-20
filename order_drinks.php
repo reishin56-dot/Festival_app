@@ -68,10 +68,6 @@ $credits = $stmt->fetchColumn();
     <h1 onclick="goToPage('order_food.php')">Getränke</h1>
     <p>Guthaben: <strong><?= number_format($credits, 2) ?> Credits</strong></p>
 
-<php require "php_functions.php"; ?>
-<body>
-       <div class="container">
-        <h1 onclick="goToPage('order_food.php')"> Essen </h1>
     <?php if ($fehler): ?>
       <p style="color:red;"><?= htmlspecialchars($fehler) ?></p>
     <?php endif; ?>

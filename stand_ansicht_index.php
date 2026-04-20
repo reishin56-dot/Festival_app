@@ -42,7 +42,7 @@ $statusLabel = ['offen' => 'Erstellt', 'in_bearbeitung' => 'In Zubereitung', 'ab
     <link rel="stylesheet" href="style.css">
 </head>
 
-<php require "php_functions.php"; ?>
+
 
 <body>
 <div class="stand-card">

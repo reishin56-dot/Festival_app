@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['stand_id'], $_POST['w
     <link rel="stylesheet" href="style.css">
 </head>
 
-<php require "php_functions.php"; ?>
+
 <body>
 <div class="container">
     <h1><u>Engpasssteuerung</u></h1>
