@@ -40,10 +40,14 @@ function change(item, delta) {
 
   value += delta;
 
-  // Minimum = 0
   if (value < 0) value = 0;
 
   el.innerText = value;
+
+  // Verstecktes Formularfeld aktualisieren (für PHP-Bestellungen)
+  let hidden = document.getElementById('qty_' + item);
+  if (hidden) hidden.value = value;
+
   updateTotal();
 }
 
