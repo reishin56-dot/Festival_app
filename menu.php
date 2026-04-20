@@ -1,10 +1,7 @@
 <?php
-session_start();
-if (!isset($_SESSION['ticket_id'])) {
-    header('Location: index.php');
-    exit;
-}
+require 'session.php';
 require 'php_functions.php';
+nurFuerBenutzer();
 
 $credits = getCredits($_SESSION['ticket_id']);
 ?>
@@ -28,7 +25,7 @@ $credits = getCredits($_SESSION['ticket_id']);
       <tr><td><button onclick="goToPage('share_orders.php')">Freunde einladen</button></td></tr>
       <tr><td><button onclick="goToPage('buy_credits.php')">Guthaben aufladen</button></td></tr>
     </table>
-    <button onclick="window.location.href='index.php'">Abmelden</button>
+    <button onclick="window.location.href='logout.php'">Abmelden</button>
   </div>
   <script src="script.js"></script>
 </body>

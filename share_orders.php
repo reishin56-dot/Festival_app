@@ -1,12 +1,12 @@
+<?php require 'session.php'; nurFuerBenutzer(); ?>
 <!DOCTYPE html>
 <html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <title>Freunde einladen</title>
-
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
 
 
 

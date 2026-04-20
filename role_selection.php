@@ -7,21 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<?php
-function changePage($seite) {
-    header("Location: " . $seite);
-    exit();
-}
-?>
-
 <body>
 
   <div class="container">
-    <h1><!-- 👥--> Ansicht wählen</h1>
+    <h1>Ansicht wählen</h1>
     <p>Bitte wähle aus, wie du die App nutzen möchtest:</p>
 
     <button onclick="goToPage('index.php')">Käuferansicht</button>
-    <button onclick="goToPage('admin_index.php')">Verkäuferansicht</button>
+    <button onclick="goToPage('admin_login.php')">Verkäuferansicht</button>
   </div>
 
   <footer>

@@ -1,5 +1,7 @@
 <?php
+require 'session.php';
 require 'php_functions.php';
+nurFuerAdmin();
 
 $zeitraum = $_GET['zeitraum'] ?? 'heute';
 

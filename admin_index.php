@@ -1,3 +1,7 @@
+<?php
+require 'session.php';
+nurFuerAdmin();
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -10,7 +14,7 @@
 <body>
   <div class="container">
     <h1><!--🔧--> Admin Index</h1>
-    <p>Willkommen im Admin-Be ich. Bitte wählen Sie eine Option:</p>
+    <p>Willkommen im Admin-Bereich. Bitte wählen Sie eine Option:</p>
     <table>
       <tr>
         <td><button onclick="goToPage('engpasssteuerung.php')">Engpässe</button></td>
@@ -19,7 +23,7 @@
         <td><button onclick="goToPage('statistik.php')"> Statistik</button></td>
       </tr>
       <tr>
-        <td><button onclick="goToPage('role_selection.php')"> Zurück zum Hauptmenü</button></td>
+        <td><button onclick="window.location.href='logout.php'">Abmelden</button></td>
       </tr>
       
 

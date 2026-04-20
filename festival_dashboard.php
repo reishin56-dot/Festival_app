@@ -1,3 +1,4 @@
+<?php require 'session.php'; nurFuerAdmin(); ?>
 <!DOCTYPE html>
 <html lang="de">
 

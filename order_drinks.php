@@ -1,7 +1,7 @@
 <?php
-session_start();
-if (!isset($_SESSION['ticket_id'])) { header('Location: index.php'); exit; }
+require 'session.php';
 require 'php_functions.php';
+nurFuerBenutzer();
 
 $fehler = '';
 

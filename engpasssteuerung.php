@@ -1,5 +1,7 @@
 <?php
+require 'session.php';
 require 'php_functions.php';
+nurFuerAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['stand_id'], $_POST['wartezeit'])) {
     warteZeitAktualisieren($_POST['stand_id'], $_POST['wartezeit']);

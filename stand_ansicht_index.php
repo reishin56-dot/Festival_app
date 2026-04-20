@@ -1,5 +1,7 @@
 <?php
+require 'session.php';
 require 'php_functions.php';
+nurFuerAdmin();
 
 $stand_id = (int)($_GET['stand'] ?? 1);
 
