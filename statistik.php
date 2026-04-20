@@ -31,6 +31,9 @@ $maxMenge = max(array_column($stats, 'menge') ?: [1]);
     <title>Statistik Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<php require "php_functions.php"; ?>
+
 <body>
 <div class="container">
     <h1><u>Statistik Board</u></h1>

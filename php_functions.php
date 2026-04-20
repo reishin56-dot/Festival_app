@@ -1,4 +1,5 @@
 <?php
+require 'db.php';
 function changePage($seite = null) {
     if ($seite === null) {
         if (isset($_GET['page'])) {

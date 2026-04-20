@@ -65,6 +65,7 @@ $credits = $stmt->fetchColumn();
     <title>Pizza</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<php require "php_functions.php"; ?>
 <body>
 <div class="container">
     <h1 onclick="goToPage('order_food.php')">Pizza</h1>

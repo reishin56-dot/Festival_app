@@ -32,6 +32,9 @@ $statusLabel = [
     <title>Meine Bestellungen</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<php require "php_functions.php"; ?>
+
 <body>
 <div class="container">
     <h1 onclick="goToPage('menu.php')">Meine Bestellungen</h1>

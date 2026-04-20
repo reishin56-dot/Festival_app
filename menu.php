@@ -18,6 +18,8 @@ $credits = $ticket['credits'] ?? 0;
   <title>Menü</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<php require "php_functions.php"; ?>
 <body>
   <div class="container">
     <h1>Menü</h1>
