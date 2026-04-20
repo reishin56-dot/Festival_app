@@ -1,35 +1,18 @@
 <?php
-require 'db.php';
+require 'php_functions.php';
 
 $stand_id = (int)($_GET['stand'] ?? 1);
 
 // Status-Update via POST (AJAX)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bestellung_id'], $_POST['status'])) {
-    $erlaubteStatus = ['offen', 'in_bearbeitung', 'abgeschlossen', 'storniert'];
-    if (in_array($_POST['status'], $erlaubteStatus)) {
-        $pdo->prepare('UPDATE bestellungen SET status = ? WHERE id = ?')
-            ->execute([$_POST['status'], (int)$_POST['bestellung_id']]);
-    }
+    bestellungStatusAktualisieren($_POST['bestellung_id'], $_POST['status']);
     header('Content-Type: application/json');
     echo json_encode(['ok' => true]);
     exit;
 }
 
-$staende = $pdo->query("SELECT id, name FROM staende WHERE aktiv = 1 ORDER BY kategorie")->fetchAll();
-
-$stmt = $pdo->prepare("
-    SELECT b.id, b.status, b.bestellt_am, t.ticketnummer,
-           GROUP_CONCAT(CONCAT(bp.menge, 'x ', p.name) ORDER BY p.name SEPARATOR ', ') AS artikel
-    FROM bestellungen b
-    JOIN tickets t ON t.id = b.ticket_id
-    JOIN bestellpositionen bp ON bp.bestellung_id = b.id
-    JOIN produkte p ON p.id = bp.produkt_id
-    WHERE b.stand_id = ? AND b.status IN ('offen','in_bearbeitung')
-    GROUP BY b.id
-    ORDER BY b.bestellt_am ASC
-");
-$stmt->execute([$stand_id]);
-$bestellungen = $stmt->fetchAll();
+$staende      = getAlleStaende();
+$bestellungen = getOffeneBestellungenByStand($stand_id);
 
 $statusFlow = ['offen' => 'in_bearbeitung', 'in_bearbeitung' => 'abgeschlossen'];
 $statusLabel = ['offen' => 'Erstellt', 'in_bearbeitung' => 'In Zubereitung', 'abgeschlossen' => 'Bereit'];

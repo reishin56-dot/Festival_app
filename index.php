@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';
+require 'php_functions.php';
 
 $fehler = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -8,9 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($ticketnummer === '') {
         $fehler = 'Bitte Ticketnummer eingeben!';
     } else {
-        $stmt = $pdo->prepare('SELECT id, name, credits FROM tickets WHERE ticketnummer = ?');
-        $stmt->execute([$ticketnummer]);
-        $ticket = $stmt->fetch();
+        $ticket = getTicketByNummer($ticketnummer);
         if ($ticket) {
             $_SESSION['ticket_id']    = $ticket['id'];
             $_SESSION['ticketnummer'] = $ticketnummer;

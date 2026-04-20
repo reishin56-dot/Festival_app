@@ -1,26 +1,9 @@
 <?php
-require 'db.php';
+require 'php_functions.php';
 
 $zeitraum = $_GET['zeitraum'] ?? 'heute';
 
-$filter = match($zeitraum) {
-    'heute'  => 'DATE(b.bestellt_am) = CURDATE()',
-    'woche'  => 'YEARWEEK(b.bestellt_am, 1) = YEARWEEK(CURDATE(), 1)',
-    'monat'  => 'MONTH(b.bestellt_am) = MONTH(CURDATE()) AND YEAR(b.bestellt_am) = YEAR(CURDATE())',
-    'jahr'   => 'YEAR(b.bestellt_am) = YEAR(CURDATE())',
-    default  => '1=1',
-};
-
-$stmt = $pdo->query("
-    SELECT p.name, p.kategorie, SUM(bp.menge) AS menge, SUM(bp.menge * bp.einzelpreis) AS umsatz
-    FROM bestellpositionen bp
-    JOIN produkte p ON p.id = bp.produkt_id
-    JOIN bestellungen b ON b.id = bp.bestellung_id
-    WHERE b.status != 'storniert' AND $filter
-    GROUP BY p.id
-    ORDER BY menge DESC
-");
-$stats = $stmt->fetchAll();
+$stats = getStatistik($zeitraum);
 
 $maxMenge = max(array_column($stats, 'menge') ?: [1]);
 ?>

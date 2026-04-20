@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['ticket_id'])) { header('Location: index.php'); exit; }
-require 'db.php';
+require 'php_functions.php';
 
 $fehler = '';
 
@@ -25,28 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    if ($gesamt_credits == 0) {
-        $fehler = 'Bitte mindestens ein Paket auswählen.';
+    $ergebnis = creditsAufladen($_SESSION['ticket_id'], $positionen);
+    if (isset($ergebnis['fehler'])) {
+        $fehler = $ergebnis['fehler'];
     } else {
-        $pdo->beginTransaction();
-        foreach ($positionen as $pos) {
-            for ($i = 0; $i < $pos['menge']; $i++) {
-                $pdo->prepare('INSERT INTO credit_aufladungen (ticket_id, betrag_euro, credits) VALUES (?,?,?)')
-                    ->execute([$_SESSION['ticket_id'], $pos['euro'], $pos['credits']]);
-            }
-        }
-        $pdo->prepare('UPDATE tickets SET credits = credits + ? WHERE id = ?')
-            ->execute([$gesamt_credits, $_SESSION['ticket_id']]);
-        $pdo->commit();
-
         header('Location: menu.php');
         exit;
     }
 }
 
-$stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-$stmt->execute([$_SESSION['ticket_id']]);
-$credits = $stmt->fetchColumn();
+$credits = getCredits($_SESSION['ticket_id']);
 ?>
 <!DOCTYPE html>
 <html lang="de">

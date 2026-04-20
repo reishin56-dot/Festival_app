@@ -1,25 +1,13 @@
 <?php
-require 'db.php';
+require 'php_functions.php';
 
-// Engpässe = Stände mit Wartezeit > 10 Minuten
-$stmt = $pdo->query("
-    SELECT s.id, s.name, s.kategorie, s.wartezeit,
-           COUNT(b.id) AS offene_bestellungen
-    FROM staende s
-    LEFT JOIN bestellungen b ON b.stand_id = s.id AND b.status IN ('offen','in_bearbeitung')
-    WHERE s.aktiv = 1
-    GROUP BY s.id
-    ORDER BY s.wartezeit DESC
-");
-$staende = $stmt->fetchAll();
-
-// Manuelle Wartezeit-Anpassung
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['stand_id'], $_POST['wartezeit'])) {
-    $pdo->prepare('UPDATE staende SET wartezeit = ? WHERE id = ?')
-        ->execute([(int)$_POST['wartezeit'], (int)$_POST['stand_id']]);
+    warteZeitAktualisieren($_POST['stand_id'], $_POST['wartezeit']);
     header('Location: engpasssteuerung.php');
     exit;
 }
+
+$staende = getStaendeMitEngpass();
 ?>
 <!DOCTYPE html>
 <html lang="de">

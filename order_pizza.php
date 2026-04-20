@@ -1,62 +1,29 @@
 <?php
 session_start();
 if (!isset($_SESSION['ticket_id'])) { header('Location: index.php'); exit; }
-require 'db.php';
+require 'php_functions.php';
 
 $fehler  = '';
 $erfolg  = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mengen = [
-        1 => (int)($_POST['qty_margherita'] ?? 0),  // Margherita  5 Credits
-        3 => (int)($_POST['qty_spezial']    ?? 0),  // Spezial    12 Credits
-        2 => (int)($_POST['qty_pepperoni']  ?? 0),  // Pepperoni   8 Credits
+        1 => (int)($_POST['qty_margherita'] ?? 0),
+        3 => (int)($_POST['qty_spezial']    ?? 0),
+        2 => (int)($_POST['qty_pepperoni']  ?? 0),
     ];
     $preise = [1 => 5.00, 3 => 12.00, 2 => 8.00];
 
-    $gesamt = 0;
-    foreach ($mengen as $pid => $menge) {
-        $gesamt += $menge * $preise[$pid];
-    }
-
-    if ($gesamt == 0) {
-        $fehler = 'Bitte mindestens ein Produkt auswählen.';
+    $ergebnis = bestellungAufgeben($_SESSION['ticket_id'], 'pizza', $mengen, $preise);
+    if (isset($ergebnis['fehler'])) {
+        $fehler = $ergebnis['fehler'];
     } else {
-        $stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-        $stmt->execute([$_SESSION['ticket_id']]);
-        $credits = $stmt->fetchColumn();
-
-        if ($credits < $gesamt) {
-            $fehler = 'Nicht genug Credits! Guthaben: ' . number_format($credits, 2);
-        } else {
-            // Stand mit kürzester Wartezeit wählen
-            $standStmt = $pdo->query("SELECT id FROM staende WHERE kategorie='pizza' AND aktiv=1 ORDER BY wartezeit ASC LIMIT 1");
-            $stand_id  = $standStmt->fetchColumn();
-
-            $pdo->beginTransaction();
-            $pdo->prepare('INSERT INTO bestellungen (ticket_id, stand_id, gesamt_credits) VALUES (?,?,?)')
-                ->execute([$_SESSION['ticket_id'], $stand_id, $gesamt]);
-            $bid = $pdo->lastInsertId();
-
-            foreach ($mengen as $pid => $menge) {
-                if ($menge > 0) {
-                    $pdo->prepare('INSERT INTO bestellpositionen (bestellung_id, produkt_id, menge, einzelpreis) VALUES (?,?,?,?)')
-                        ->execute([$bid, $pid, $menge, $preise[$pid]]);
-                }
-            }
-            $pdo->prepare('UPDATE tickets SET credits = credits - ? WHERE id = ?')
-                ->execute([$gesamt, $_SESSION['ticket_id']]);
-            $pdo->commit();
-
-            header('Location: notification.php?erfolg=1');
-            exit;
-        }
+        header('Location: notification.php?erfolg=1');
+        exit;
     }
 }
 
-$stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-$stmt->execute([$_SESSION['ticket_id']]);
-$credits = $stmt->fetchColumn();
+$credits = getCredits($_SESSION['ticket_id']);
 ?>
 <!DOCTYPE html>
 <html lang="de">

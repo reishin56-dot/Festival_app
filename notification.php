@@ -1,22 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['ticket_id'])) { header('Location: index.php'); exit; }
-require 'db.php';
+require 'php_functions.php';
 
-$stmt = $pdo->prepare("
-    SELECT b.id, b.status, b.gesamt_credits, b.bestellt_am,
-           s.name AS stand_name,
-           GROUP_CONCAT(CONCAT(bp.menge, 'x ', p.name) ORDER BY p.name SEPARATOR ', ') AS artikel
-    FROM bestellungen b
-    JOIN staende s ON s.id = b.stand_id
-    JOIN bestellpositionen bp ON bp.bestellung_id = b.id
-    JOIN produkte p ON p.id = bp.produkt_id
-    WHERE b.ticket_id = ?
-    GROUP BY b.id
-    ORDER BY b.bestellt_am DESC
-");
-$stmt->execute([$_SESSION['ticket_id']]);
-$bestellungen = $stmt->fetchAll();
+$bestellungen = getBestellungenByTicket($_SESSION['ticket_id']);
 
 $statusLabel = [
     'offen'          => 'Erstellt',

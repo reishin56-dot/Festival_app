@@ -1,60 +1,28 @@
 <?php
 session_start();
 if (!isset($_SESSION['ticket_id'])) { header('Location: index.php'); exit; }
-require 'db.php';
+require 'php_functions.php';
 
 $fehler = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mengen = [
-        7 => (int)($_POST['qty_wasser']   ?? 0),  // Wasser    5 Credits
-        8 => (int)($_POST['qty_bier']     ?? 0),  // Bier      8 Credits
-        9 => (int)($_POST['qty_cocktail'] ?? 0),  // Cocktail 12 Credits
+        7 => (int)($_POST['qty_wasser']   ?? 0),
+        8 => (int)($_POST['qty_bier']     ?? 0),
+        9 => (int)($_POST['qty_cocktail'] ?? 0),
     ];
     $preise = [7 => 5.00, 8 => 8.00, 9 => 12.00];
 
-    $gesamt = 0;
-    foreach ($mengen as $pid => $menge) {
-        $gesamt += $menge * $preise[$pid];
-    }
-
-    if ($gesamt == 0) {
-        $fehler = 'Bitte mindestens ein Produkt auswählen.';
+    $ergebnis = bestellungAufgeben($_SESSION['ticket_id'], 'getraenke', $mengen, $preise);
+    if (isset($ergebnis['fehler'])) {
+        $fehler = $ergebnis['fehler'];
     } else {
-        $credits = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-        $credits->execute([$_SESSION['ticket_id']]);
-        $credits = $credits->fetchColumn();
-
-        if ($credits < $gesamt) {
-            $fehler = 'Nicht genug Credits! Guthaben: ' . number_format($credits, 2);
-        } else {
-            $standStmt = $pdo->query("SELECT id FROM staende WHERE kategorie='getraenke' AND aktiv=1 ORDER BY wartezeit ASC LIMIT 1");
-            $stand_id  = $standStmt->fetchColumn();
-
-            $pdo->beginTransaction();
-            $pdo->prepare('INSERT INTO bestellungen (ticket_id, stand_id, gesamt_credits) VALUES (?,?,?)')
-                ->execute([$_SESSION['ticket_id'], $stand_id, $gesamt]);
-            $bid = $pdo->lastInsertId();
-
-            foreach ($mengen as $pid => $menge) {
-                if ($menge > 0) {
-                    $pdo->prepare('INSERT INTO bestellpositionen (bestellung_id, produkt_id, menge, einzelpreis) VALUES (?,?,?,?)')
-                        ->execute([$bid, $pid, $menge, $preise[$pid]]);
-                }
-            }
-            $pdo->prepare('UPDATE tickets SET credits = credits - ? WHERE id = ?')
-                ->execute([$gesamt, $_SESSION['ticket_id']]);
-            $pdo->commit();
-
-            header('Location: notification.php?erfolg=1');
-            exit;
-        }
+        header('Location: notification.php?erfolg=1');
+        exit;
     }
 }
 
-$stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-$stmt->execute([$_SESSION['ticket_id']]);
-$credits = $stmt->fetchColumn();
+$credits = getCredits($_SESSION['ticket_id']);
 ?>
 <!DOCTYPE html>
 <html lang="de">

@@ -4,12 +4,9 @@ if (!isset($_SESSION['ticket_id'])) {
     header('Location: index.php');
     exit;
 }
-require 'db.php';
+require 'php_functions.php';
 
-$stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ?');
-$stmt->execute([$_SESSION['ticket_id']]);
-$ticket = $stmt->fetch();
-$credits = $ticket['credits'] ?? 0;
+$credits = getCredits($_SESSION['ticket_id']);
 ?>
 <!DOCTYPE html>
 <html lang="de">
