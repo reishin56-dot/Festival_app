@@ -8,15 +8,22 @@
 </head>
 <link rel="stylesheet" href="style.css">
 
+<?php
+function changePage($seite) {
+    header("Location: " . $seite);
+    exit();
+}
+?>
+
 <body> 
     <div class="container">
-        <h1 onclick="goToPage('menu.html')"> Bestellungen teilen </h1>
+        <h1 onclick="goToPage('menu.php')"> Bestellungen teilen </h1>
         <p>Hier können Sie Ihre Bestellungen mit Ihren Freunden teilen, damit sie wissen, was Sie bestellt haben und vielleicht auch etwas bestellen möchten.</p>
         <input type="text" id="shareInput" placeholder="Geben Sie die Ticketnummer ein, um Ihre Bestellung zu teilen">
         <button onclick="shareOrder()">Bestellung teilen</button>
            <tr>
                 <td>
-                     <button onclick="goToPage('menu.html')">Zurück</button> 
+                     <button onclick="goToPage('menu.php')">Zurück</button> 
                 </td>
             </tr>
     </div>

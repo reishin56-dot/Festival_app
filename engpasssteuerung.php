@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
     <div class="container">
         <h1><u><!--⚠️--> Engpasssteuerung</u></h1>
@@ -26,8 +27,8 @@
             </div>
         </div>
 
-        <button onclick="goToPage('stand_ansicht_index.html')">Standansicht anzeigen</button>
-        <button onclick="goToPage('admin_index.html')">Zurück</button>
+        <button onclick="goToPage('stand_ansicht_index.php')">Standansicht anzeigen</button>
+        <button onclick="goToPage('admin_index.php')">Zurück</button>
     </div>
 
     <footer>

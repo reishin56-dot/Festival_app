@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
        <div class="container">
-        <h1 onclick="goToPage('order_food.html')"> Essen </h1>
+        <h1 onclick="goToPage('order_food.php')"> Essen </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
         <list>
@@ -39,7 +40,7 @@
             <h3>Gesamt: <span id="total">0</span> Credits</h3>
                <tr>
                 <td>
-                     <button onclick="goToPage('order_food.html')">Zurück</button> 
+                     <button onclick="goToPage('order_food.php')">Zurück</button> 
                 </td>
             </tr>
         </list>

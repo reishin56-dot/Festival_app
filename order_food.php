@@ -7,26 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
     <div class="container">
-        <h1 onclick="goToPage('menu.html')">Essen & Getränke</h1>
+        <h1 onclick="goToPage('menu.php')">Essen & Getränke</h1>
 
         <table>
             <tr>
-                <td><button onclick="goToPage('order_drinks.html')">Getränke bestellen</button></td>
+                <td><button onclick="goToPage('order_drinks.php')">Getränke bestellen</button></td>
             </tr>
             <tr>
-                <td><button onclick="goToPage('order_pizza.html')">Pizza bestellen</button></td>
+                <td><button onclick="goToPage('order_pizza.php')">Pizza bestellen</button></td>
             </tr>
             <tr>
                 <td>
-                    <button onclick="goToPage('order_asia.html')">Asia bestellen</button>
+                    <button onclick="goToPage('order_asia.php')">Asia bestellen</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                     <button onclick="goToPage('menu.html')">Zurück</button> 
+                     <button onclick="goToPage('menu.php')">Zurück</button> 
                 </td>
             </tr>
         </table>

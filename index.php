@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
   <div class="container">
@@ -20,7 +21,7 @@
         <button onclick="goToMenu()">Weiter</button>
       </tr>
      <tr>
-        <td><button onclick="goToPage('role_selection.html')"> Zurück zum Hauptmenü</button></td>
+        <td><button onclick="goToPage('role_selection.php')"> Zurück zum Hauptmenü</button></td>
       </tr>
   </div>
 

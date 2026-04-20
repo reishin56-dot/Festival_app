@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
   <div class="container">
@@ -16,8 +17,8 @@
 
     <br>
 
-    <button onclick="goToPage('engpaesse_.html')">Engpasssteuerung</button>
-     <button onclick="goToPage('statistik.html')">Statistik</button>
+    <button onclick="goToPage('engpasssteuerung.php')">Engpasssteuerung</button>
+     <button onclick="goToPage('statistik.php')">Statistik</button>
 
   </div>
 

@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<?php
+function changePage($seite) {
+    header("Location: " . $seite);
+    exit();
+}
+?>
+
 <body>
     <div class="container">
         <h1><u><!--🔧--> Statistik Board</h1></u>
@@ -41,7 +48,7 @@
                 </div>
             </div>
         </div>
-         <button onclick="goToPage('admin_index.html')">Zurück</button>
+         <button onclick="goToPage('admin_index.php')">Zurück</button>
     </div>
        
     </div>

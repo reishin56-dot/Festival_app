@@ -7,9 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<?php
+function changePage($seite) {
+    header("Location: " . $seite);
+    exit();
+}
+?>
+
+
 <body>
     <div class="container">
-        <h1 onclick="goToPage('menu.html')">Ihre Bestellungen & Benachrichtigungen</h1>
+        <h1 onclick="goToPage('menu.php')">Ihre Bestellungen & Benachrichtigungen</h1>
         <div class="orders">
             <h2>Bestellungen</h2>
             <ul>
@@ -22,7 +30,7 @@
             </ul>
                <tr>
                 <td>
-                     <button onclick="goToPage('menu.html')">Zurück</button> 
+                     <button onclick="goToPage('menu.php')">Zurück</button> 
                 </td>
             </tr>
         </div>

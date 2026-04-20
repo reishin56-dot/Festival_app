@@ -6,15 +6,15 @@ function goToMenu() {
     return;
   }
 
-  window.location.href = "menu.html";
+  window.location.href = "menu.php";
 }
 
 function goBack() {
-  window.location.href = "index.html";
+  window.location.href = "index.php";
 }
 
 function goToPage(page) {
-  window.location.href = page;
+  window.location.href = 'php_functions.php?page=' + encodeURIComponent(page);
 }
 
 // Preise

@@ -13,13 +13,13 @@
     <p>Willkommen im Admin-Bereich. Bitte wählen Sie eine Option:</p>
     <table>
       <tr>
-        <td><button onclick="goToPage('engpasssteuerung.html')">Engpässe</button></td>
+        <td><button onclick="goToPage('engpasssteuerung.php')">Engpässe</button></td>
       </tr>
       <tr>
-        <td><button onclick="goToPage('statistik.html')"> Statistik</button></td>
+        <td><button onclick="goToPage('statistik.php')"> Statistik</button></td>
       </tr>
-       <tr>
-        <td><button onclick="goToPage('role_selection.html')"> Zurück zum Hauptmenü</button></td>
+      <tr>
+        <td><button onclick="goToPage('role_selection.php')"> Zurück zum Hauptmenü</button></td>
       </tr>
       
 

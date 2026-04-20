@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
+
 <body>
     <div class="container">
-        <h1 onclick="goToPage('menu.html')"> Guthaben aufladen </h1>
+        <h1 onclick="goToPage('menu.php')"> Guthaben aufladen </h1>
 
         <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
         <div class="item">
@@ -38,7 +40,7 @@
         <h3>Gesamt: <span id="total">0</span> €</h3>
            <tr>
                 <td>
-                     <button onclick="goToPage('menu.html')">Zurück</button> 
+                     <button onclick="goToPage('menu.php')">Zurück</button> 
                 </td>
             </tr>
     </div>

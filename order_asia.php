@@ -8,9 +8,10 @@
 
 </head>
 
+
 <body></body>
 <div class="container">
-    <h1 onclick="goToPage('order_food.html')"> Asia </h1>
+    <h1 onclick="goToPage('order_food.php')"> Asia </h1>
 
     <!-- Placeholder for Asia menu items  + - noch funktional als buttos hinzufügen -->
     <div class="item">
@@ -41,7 +42,7 @@
     <h3>Gesamt: <span id="total">0</span> Credits</h3>
  <tr>
                 <td>
-                     <button onclick="goToPage('order_food.html')">Zurück</button> 
+                     <button onclick="goToPage('order_food.php')">Zurück</button> 
                 </td>
             </tr>
 </div>

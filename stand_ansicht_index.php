@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+<?php
+function changePage($seite) {
+    header("Location: " . $seite);
+    exit();
+}
+?>
+
 <body>
   <div class="stand-card">
     <div class="stand-header">
@@ -45,7 +52,7 @@
       </div>
     </div>
 
-    <button class="back-btn" onclick="goToPage('admin_index.html')">Zurück</button>
+    <button class="back-btn" onclick="goToPage('admin_index.php')">Zurück</button>
   </div>
 
 

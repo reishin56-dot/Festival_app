@@ -15,16 +15,16 @@
     <table>
 
       <tr>
-        <td><button onclick="goToPage('order_food.html')">Essen bestellen</button></td>
+        <td><button onclick="goToPage('order_food.php')">Essen bestellen</button></td>
       </tr>
       <tr>
-        <td><button onclick="goToPage('notification.html')">Meine Bestellungen</button></td>
+        <td><button onclick="goToPage('notification.php')">Meine Bestellungen</button></td>
       </tr>
       <tr>
-        <td><button onclick="goToPage('share_orders.html')">Freunde einladen</button></td>
+        <td><button onclick="goToPage('share_orders.php')">Freunde einladen</button></td>
       </tr>
       <tr>
-        <td><button onclick="goToPage('buy_credits.html')">Guthaben aufladen</button></td>
+        <td><button onclick="goToPage('buy_credits.php')">Guthaben aufladen</button></td>
       </tr>
     </table>
     <button onclick="goBack()">Zurück</button>
