@@ -81,28 +81,46 @@ function bestellungAufgeben($ticket_id, $kategorie, $mengen, $preise) {
         return ['fehler' => 'Bitte mindestens ein Produkt auswählen.'];
     }
 
-    $credits = getCredits($ticket_id);
-    if ($credits < $gesamt) {
-        return ['fehler' => 'Nicht genug Credits! Guthaben: ' . number_format($credits, 2)];
-    }
+    // Stand vor der Transaktion ermitteln (nur lesend, kein Lock nötig)
+    $standStmt = $pdo->prepare('SELECT id FROM staende WHERE kategorie = ? AND aktiv = 1 ORDER BY wartezeit ASC LIMIT 1');
+    $standStmt->execute([$kategorie]);
+    $stand_id = $standStmt->fetchColumn();
 
-    $standStmt = $pdo->query("SELECT id FROM staende WHERE kategorie='$kategorie' AND aktiv=1 ORDER BY wartezeit ASC LIMIT 1");
-    $stand_id  = $standStmt->fetchColumn();
+    if (!$stand_id) {
+        return ['fehler' => 'Kein aktiver Stand verfügbar.'];
+    }
 
     $pdo->beginTransaction();
-    $pdo->prepare('INSERT INTO bestellungen (ticket_id, stand_id, gesamt_credits) VALUES (?,?,?)')
-        ->execute([$ticket_id, $stand_id, $gesamt]);
-    $bid = $pdo->lastInsertId();
+    try {
+        // Guthaben mit FOR UPDATE sperren – verhindert Race Condition bei
+        // gleichzeitigen Bestellungen desselben Tickets
+        $stmt = $pdo->prepare('SELECT credits FROM tickets WHERE id = ? FOR UPDATE');
+        $stmt->execute([$ticket_id]);
+        $credits = $stmt->fetchColumn();
 
-    foreach ($mengen as $pid => $menge) {
-        if ($menge > 0) {
-            $pdo->prepare('INSERT INTO bestellpositionen (bestellung_id, produkt_id, menge, einzelpreis) VALUES (?,?,?,?)')
-                ->execute([$bid, $pid, $menge, $preise[$pid]]);
+        if ($credits < $gesamt) {
+            $pdo->rollBack();
+            return ['fehler' => 'Nicht genug Credits! Guthaben: ' . number_format($credits, 2)];
         }
+
+        $pdo->prepare('INSERT INTO bestellungen (ticket_id, stand_id, gesamt_credits) VALUES (?,?,?)')
+            ->execute([$ticket_id, $stand_id, $gesamt]);
+        $bid = $pdo->lastInsertId();
+
+        foreach ($mengen as $pid => $menge) {
+            if ($menge > 0) {
+                $pdo->prepare('INSERT INTO bestellpositionen (bestellung_id, produkt_id, menge, einzelpreis) VALUES (?,?,?,?)')
+                    ->execute([$bid, $pid, $menge, $preise[$pid]]);
+            }
+        }
+
+        $pdo->prepare('UPDATE tickets SET credits = credits - ? WHERE id = ?')
+            ->execute([$gesamt, $ticket_id]);
+        $pdo->commit();
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        throw $e;
     }
-    $pdo->prepare('UPDATE tickets SET credits = credits - ? WHERE id = ?')
-        ->execute([$gesamt, $ticket_id]);
-    $pdo->commit();
 
     return ['erfolg' => true];
 }
